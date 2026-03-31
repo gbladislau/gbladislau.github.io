@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gabriel Braga Ladislau projects.">
+    <title>Gabriel Braga Ladislau | Projects</title>
+    <link rel="icon" href="./assets/images/1311.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/typography.css">
+    <link rel="stylesheet" href="./css/utilities.css">
+    <script defer src="./js/script.js"></script>
+  </head>
+  <body>
+    <button class="info-chip" type="button" aria-expanded="false" aria-controls="site-info-popup" aria-label="About this page">
+      i
+    </button>
+    <div class="info-popup" id="site-info-popup" role="status" aria-hidden="true">
+      GPT 5 generated this webpage. My web skills tapped out, so I called for backup.
+    </div>
+    <div class="page-ornament page-ornament-left" aria-hidden="true"></div>
+    <div class="page-ornament page-ornament-right" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="navbar">
+        <a class="nav-title-link" href="./index.html">Gabriel Braga Ladislau</a>
+        <nav class="nav-actions" aria-label="Primary">
+          <a class="button button-secondary" href="./index.html">Home</a>
+          <a class="button button-secondary" href="https://github.com/gbladislau" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button" href="mailto:gabriel.b.ladislau@gmail.com">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero-shell blog-hero-shell">
+        <div class="blog-hero panel reveal reveal-delay-1">
+          <p class="eyebrow">Projects</p>
+          <h1 class="main-title blog-title">Selected GitHub projects.</h1>
+          <p class="hero-lead blog-lead">A small selection of repositories with a bit more context.</p>
+          <div class="status-note">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span class="status-text">This page is still under construction.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section reveal reveal-delay-2" aria-labelledby="github-projects-title">
+        <div class="section-intro">
+          <p class="section-label">GitHub</p>
+          <h2 class="subheader-text" id="github-projects-title">Repositories</h2>
+        </div>
+        <div class="blog-projects-grid">
+          <article class="project-card panel blog-project-card">
+            <div class="project-topline">Python / LLM tooling</div>
+            <h3 class="project-heading">Episodic-Memory</h3>
+            <p class="body-text">An exploration of giving GPT-style systems episodic memory so they can retrieve specific past facts and respond with stronger contextual continuity across interactions.</p>
+            <a class="text-link" href="https://github.com/gbladislau/Episodic-Memory" target="_blank" rel="noreferrer">Open repository</a>
+          </article>
+
+          <article class="project-card panel blog-project-card">
+            <div class="project-topline">Neural networks</div>
+            <h3 class="project-heading">IA-Game-Agent</h3>
+            <p class="body-text">A compact neural-network-driven game agent project that reflects an earlier hands-on phase of experimenting with model behavior, control, and decision making in a constrained environment.</p>
+            <a class="text-link" href="https://github.com/gbladislau/IA-Game-Agent" target="_blank" rel="noreferrer">Open repository</a>
+          </article>
+
+          <article class="project-card panel blog-project-card">
+            <div class="project-topline">Optimization</div>
+            <h3 class="project-heading">CVRP-Simulated-Annealing</h3>
+            <p class="body-text">A simulated annealing approach to the capacitated vehicle routing problem, built around search heuristics and practical optimization rather than black-box tooling.</p>
+            <a class="text-link" href="https://github.com/gbladislau/CVRP-Simulated-Annealing" target="_blank" rel="noreferrer">Open repository</a>
+          </article>
+
+          <article class="project-card panel blog-project-card">
+            <div class="project-topline">JavaScript product work</div>
+            <h3 class="project-heading">ReadMore</h3>
+            <p class="body-text">A project from integrated coursework with a stronger product angle, useful as a contrast to the research-heavy and systems-heavy work elsewhere in my GitHub.</p>
+            <a class="text-link" href="https://github.com/gbladislau/ReadMore" target="_blank" rel="noreferrer">Open repository</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="closing-strip reveal reveal-delay-3" aria-label="Back to homepage">
+        <p class="closing-text"><a href="./index.html">Back to homepage.</a></p>
+      </section>
+    </main>
+  </body>
+</html>

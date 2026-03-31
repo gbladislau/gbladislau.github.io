@@ -1,49 +1,110 @@
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Source Serif 4", Georgia, serif;
 }
 
-.nav-title {
-  font-weight: 700;
-  font-size: 24px;
+.nav-title-link,
+.button,
+.text-link,
+.section-label,
+.eyebrow,
+.meta-label,
+.meta-value,
+.signal-number,
+.signal-label,
+.timeline-year,
+.project-topline,
+.matrix-title {
+  font-family: "IBM Plex Sans", "Helvetica Neue", sans-serif;
 }
 
-.button-text {
-  font-size: 14px;
-  font-weight: 700;
+.nav-title-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.image-caption {
-  font-size: 14px;
-  font-weight: 500;
+.eyebrow,
+.section-label,
+.project-topline,
+.meta-label,
+.signal-label,
+.timeline-year,
+.matrix-title {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.meta-value,
+.signal-number {
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .main-title {
-  font-size: 40px;
-  font-weight: 700;
+  margin: 0;
+  font-size: clamp(3.1rem, 8vw, 6.6rem);
+  line-height: 0.98;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.hero-lead,
+.editorial-statement,
+.subheader-text,
+.project-heading,
+.card-title,
+.closing-text {
+  margin: 0;
+}
+
+.hero-lead {
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.editorial-statement {
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  line-height: 1.35;
+  font-weight: 400;
 }
 
 .subheader-text {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: clamp(2rem, 3vw, 3.4rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.018em;
 }
 
 .body-text {
-  font-size: 16px;
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.card-title,
+.project-heading,
+.closing-text a {
+  font-size: 1.5rem;
+  line-height: 1.14;
+  font-weight: 500;
+  letter-spacing: -0.014em;
+}
+
+.closing-text {
+  font-size: clamp(1.7rem, 2.4vw, 2.4rem);
+  line-height: 1.22;
   font-weight: 500;
 }
 
-.project-card-text {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-}
-
-.project-title {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+.button,
+.text-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
