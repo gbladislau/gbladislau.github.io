@@ -27,6 +27,10 @@ html {
   -ms-text-size-adjust: none;
 }
 
+[id] {
+  scroll-margin-top: 7rem;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -347,6 +351,21 @@ main {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
