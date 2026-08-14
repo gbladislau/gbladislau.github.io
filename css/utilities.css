@@ -97,6 +97,14 @@
   border-color: #1548a0;
 }
 
+.button:focus-visible,
+.nav-title-link:focus-visible,
+.text-link:focus-visible,
+.closing-text a:focus-visible {
+  outline: 3px solid rgba(29, 95, 209, 0.35);
+  outline-offset: 3px;
+}
+
 .button-secondary {
   background: transparent;
   color: #0f1722;

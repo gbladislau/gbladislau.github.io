@@ -1,74 +1,85 @@
-const navLinks = document.querySelectorAll('a[href^="#"]');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-navLinks.forEach((link) => {
-  link.addEventListener('click', (event) => {
-    const targetId = link.getAttribute('href');
+function initializeAnchorNavigation() {
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const targetId = link.hash.slice(1);
+      const target = targetId ? document.getElementById(targetId) : null;
 
-    if (!targetId || targetId === '#') {
-      return;
-    }
+      if (!target) {
+        return;
+      }
 
-    const target = document.querySelector(targetId);
-
-    if (!target) {
-      return;
-    }
-
-    event.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      event.preventDefault();
+      target.scrollIntoView({
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+        block: 'start',
+      });
+      window.history.pushState(null, '', link.hash);
+    });
   });
-});
+}
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
+function initializeScrollReveals() {
+  const revealElements = document.querySelectorAll('.panel, .editorial-band, .closing-strip');
+
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    revealElements.forEach((element) => element.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.18,
+      });
+    },
+    { threshold: 0.18 }
+  );
+
+  revealElements.forEach((element) => observer.observe(element));
+}
+
+function initializeInfoPopup() {
+  const infoChip = document.querySelector('.info-chip');
+  const infoPopup = document.querySelector('.info-popup');
+
+  if (!infoChip || !infoPopup) {
+    return;
   }
-);
 
-document.querySelectorAll('.panel, .editorial-band, .closing-strip').forEach((element) => {
-  observer.observe(element);
-});
-
-const infoChip = document.querySelector('.info-chip');
-const infoPopup = document.querySelector('.info-popup');
-
-if (infoChip && infoPopup) {
-  const toggleInfoPopup = () => {
-    const isVisible = infoPopup.classList.toggle('is-visible');
-
+  const setPopupVisibility = (isVisible) => {
+    infoPopup.classList.toggle('is-visible', isVisible);
     infoChip.setAttribute('aria-expanded', String(isVisible));
     infoPopup.setAttribute('aria-hidden', String(!isVisible));
   };
 
-  const closeInfoPopup = () => {
-    infoPopup.classList.remove('is-visible');
-    infoChip.setAttribute('aria-expanded', 'false');
-    infoPopup.setAttribute('aria-hidden', 'true');
-  };
-
-  infoChip.addEventListener('click', toggleInfoPopup);
+  infoChip.addEventListener('click', () => {
+    setPopupVisibility(infoChip.getAttribute('aria-expanded') !== 'true');
+  });
 
   document.addEventListener('click', (event) => {
-    if (!infoPopup.classList.contains('is-visible')) {
-      return;
-    }
+    const eventPath = event.composedPath();
+    const clickedOutsidePopup = !eventPath.includes(infoPopup) && !eventPath.includes(infoChip);
 
-    if (event.target instanceof Node && !infoChip.contains(event.target) && !infoPopup.contains(event.target)) {
-      closeInfoPopup();
+    if (infoChip.getAttribute('aria-expanded') === 'true' && clickedOutsidePopup) {
+      setPopupVisibility(false);
     }
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      closeInfoPopup();
+    if (event.key === 'Escape' && infoChip.getAttribute('aria-expanded') === 'true') {
+      setPopupVisibility(false);
+      infoChip.focus();
     }
   });
 }
+
+initializeAnchorNavigation();
+initializeScrollReveals();
+initializeInfoPopup();
